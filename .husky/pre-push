@@ -14,6 +14,6 @@ if [[ ! $local_branch_name =~ $valid_branch_regex ]]; then
     exit 1
 fi
 
-npm run ci:test
+npm run test
 
 exit 0
