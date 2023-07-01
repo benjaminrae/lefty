@@ -1,5 +1,8 @@
 export interface Movable {
   move(): void;
+}
+
+export interface Turnable {
   turnLeft(): void;
 }
 
@@ -8,8 +11,17 @@ export interface Renderable extends Collisionable {
 }
 
 export interface Collector extends Storage {
-  place(): void;
+  place(item: Collectable): void;
+  pickUp(item: Collectable): void;
+}
+
+export interface Collectable extends Storable {
   pickUp(): void;
+  place(): void;
+}
+
+export interface Storable {
+  store(): void;
 }
 
 export interface Storage {
@@ -26,6 +38,8 @@ export interface Sensors {
 export interface Collisionable {
   getCoordinates(): Coordinates;
 }
+
+export interface Obstacle extends Collisionable {}
 
 export type Coordinates = {
   x: number;
