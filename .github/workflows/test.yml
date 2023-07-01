@@ -26,4 +26,4 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Testing
-        run: pnpm test:coverage # TODO when using sonar in future check coverage in sonar workflow
+        run: pnpm test
