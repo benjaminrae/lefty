@@ -25,7 +25,8 @@ export interface Storable {
 }
 
 export interface Storage {
-  store(): void;
+  store(item: Storable): void;
+  withdraw(): Storable;
   checkItemsInStorage(): number;
 }
 
