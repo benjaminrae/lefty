@@ -54,3 +54,10 @@ export type Coordinates = {
   x: number;
   y: number;
 };
+
+export interface Collection<T> {
+  add(item: T): void;
+  remove(item: T): void;
+  getItems(): T[];
+  count(): number;
+}
