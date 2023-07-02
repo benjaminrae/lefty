@@ -1,4 +1,4 @@
-import { MockCollectable } from '../../__mocks__/mock-collectable';
+import { MockCollectable } from '../../__mocks__/collectable.mock';
 import { Direction } from '../../enums';
 import { type Coordinates } from '../../types';
 import { BaseStack } from '../Stack';

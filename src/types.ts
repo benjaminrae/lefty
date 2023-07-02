@@ -9,8 +9,12 @@ export interface Turnable {
   getOrientation(): Direction;
 }
 
-export interface Renderable extends Collisionable {
+export interface Renderable {
   render(): void;
+}
+
+export interface Drawable extends Collisionable {
+  draw(): void;
 }
 
 export interface Collector {
@@ -50,3 +54,10 @@ export type Coordinates = {
   x: number;
   y: number;
 };
+
+export interface Collection<T> {
+  add(item: T): void;
+  remove(item: T): void;
+  getItems(): T[];
+  count(): number;
+}
