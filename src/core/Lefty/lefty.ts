@@ -6,6 +6,7 @@ import {
   type Coordinates,
   type Movable,
   type Storage,
+  type Turnable,
 } from '../../types';
 import { BaseStack } from '../Stack';
 import { StorageModule } from '../StorageModule/storage-module';
@@ -17,17 +18,27 @@ export const defaultLeftyConfig: LeftyConfig = {
   storage: new StorageModule(new BaseStack(5)),
 };
 
-export class Lefty implements Collector, Movable, Collisionable {
+export class Lefty implements Turnable, Collector, Movable, Collisionable {
   #coordinates: Coordinates;
   #direction: Direction;
   #storage: Storage;
   #movementMap = new Map<Direction, () => void>();
+  #turnMap = new Map<Direction, Direction>();
 
   constructor({ coordinates, direction, storage }: LeftyConfig) {
     this.#coordinates = coordinates;
     this.#direction = direction;
     this.#storage = storage;
     this.#generateMovementMap();
+    this.#generateTurnMap();
+  }
+
+  turn(): void {
+    this.#direction = this.#turnMap.get(this.#direction)!;
+  }
+
+  getOrientation(): Direction {
+    return this.#direction;
   }
 
   place(): void {
@@ -74,5 +85,12 @@ export class Lefty implements Collector, Movable, Collisionable {
 
   #moveDown() {
     this.#coordinates.y--;
+  }
+
+  #generateTurnMap() {
+    this.#turnMap.set(Direction.RIGHT, Direction.UP);
+    this.#turnMap.set(Direction.UP, Direction.LEFT);
+    this.#turnMap.set(Direction.LEFT, Direction.DOWN);
+    this.#turnMap.set(Direction.DOWN, Direction.RIGHT);
   }
 }
