@@ -1,4 +1,4 @@
-import { MockStorable } from '../../__mocks__/mock-storable';
+import { MockStorable } from '../../__mocks__/storable.mock';
 import { type Storable } from '../../types';
 import { BaseStack, type Stack } from '../Stack';
 import { StorageModule } from './storage-module';

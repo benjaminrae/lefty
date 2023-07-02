@@ -2,12 +2,12 @@ import { Direction } from '../../enums';
 import {
   type Collectable,
   type Collector,
-  type Collisionable,
   type Coordinates,
   type Movable,
   type Storage,
   type Turnable,
 } from '../../types';
+import { MapObject } from '../Map';
 import { BaseStack } from '../Stack';
 import { StorageModule } from '../StorageModule/storage-module';
 import { type LeftyConfig } from './types';
@@ -18,15 +18,14 @@ export const defaultLeftyConfig: LeftyConfig = {
   storage: new StorageModule(new BaseStack(5)),
 };
 
-export class Lefty implements Turnable, Collector, Movable, Collisionable {
-  #coordinates: Coordinates;
+export class Lefty extends MapObject implements Turnable, Collector, Movable {
   #direction: Direction;
   #storage: Storage;
   #movementMap = new Map<Direction, () => void>();
   #turnMap = new Map<Direction, Direction>();
 
   constructor({ coordinates, direction, storage }: LeftyConfig) {
-    this.#coordinates = coordinates;
+    super(coordinates);
     this.#direction = direction;
     this.#storage = storage;
     this.#generateMovementMap();
@@ -43,7 +42,7 @@ export class Lefty implements Turnable, Collector, Movable, Collisionable {
 
   place(): void {
     const item = this.#storage.withdraw();
-    (item as Collectable).place(this.#coordinates);
+    (item as Collectable).place(this.coordinates);
   }
 
   pickUp(item: Collectable): void {
@@ -57,7 +56,7 @@ export class Lefty implements Turnable, Collector, Movable, Collisionable {
   }
 
   getCoordinates(): Coordinates {
-    return this.#coordinates;
+    return this.coordinates;
   }
 
   move() {
@@ -72,19 +71,19 @@ export class Lefty implements Turnable, Collector, Movable, Collisionable {
   }
 
   #moveRight() {
-    this.#coordinates.x++;
+    this.coordinates.x++;
   }
 
   #moveLeft() {
-    this.#coordinates.x--;
+    this.coordinates.x--;
   }
 
   #moveUp() {
-    this.#coordinates.y++;
+    this.coordinates.y++;
   }
 
   #moveDown() {
-    this.#coordinates.y--;
+    this.coordinates.y--;
   }
 
   #generateTurnMap() {

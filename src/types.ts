@@ -9,8 +9,12 @@ export interface Turnable {
   getOrientation(): Direction;
 }
 
-export interface Renderable extends Collisionable {
+export interface Renderable {
   render(): void;
+}
+
+export interface Drawable extends Collisionable {
+  draw(): void;
 }
 
 export interface Collector {
