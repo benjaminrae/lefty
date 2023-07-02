@@ -10,14 +10,15 @@ export interface Renderable extends Collisionable {
   render(): void;
 }
 
-export interface Collector extends Storage {
-  place(item: Collectable): void;
+export interface Collector {
+  place(): void;
   pickUp(item: Collectable): void;
+  checkCollectedItems(): number;
 }
 
 export interface Collectable extends Storable {
   pickUp(): void;
-  place(): void;
+  place(coordinates: Coordinates): void;
 }
 
 export interface Storable {

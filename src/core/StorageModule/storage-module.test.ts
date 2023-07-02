@@ -1,3 +1,4 @@
+import { MockStorable } from '../../__mocks__/mock-storable';
 import { type Storable } from '../../types';
 import { BaseStack, type Stack } from '../Stack';
 import { StorageModule } from './storage-module';
@@ -22,13 +23,8 @@ describe('Given StorageModule', () => {
   describe('When it is created and an item is stored', () => {
     test('Then it should have one item in storage', () => {
       const storageModule = new StorageModule(storage);
-      const storable: Storable = {
-        store() {
-          return 'stored';
-        },
-      };
 
-      storageModule.store(storable);
+      storageModule.store(new MockStorable());
 
       expect(storageModule.checkItemsInStorage()).toBe(1);
     });
@@ -37,15 +33,11 @@ describe('Given StorageModule', () => {
   describe('When an item is withdrawn', () => {
     test('Then it should return the last item stored', () => {
       const storageModule = new StorageModule(storage);
-      const storable: Storable = {
-        store() {
-          return 'stored';
-        },
-      };
+      const storable = new MockStorable();
 
       storageModule.store(storable);
 
-      expect(storageModule.withdraw()).toBe(storable);
+      expect(storageModule.withdraw()).toStrictEqual(storable);
     });
   });
 });
