@@ -1,9 +1,12 @@
+import { type Direction } from './enums';
+
 export interface Movable {
   move(): void;
 }
 
 export interface Turnable {
-  turnLeft(): void;
+  turn(direction: Direction): void;
+  getOrientation(): Direction;
 }
 
 export interface Renderable extends Collisionable {

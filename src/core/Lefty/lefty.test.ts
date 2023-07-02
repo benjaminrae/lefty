@@ -119,4 +119,16 @@ describe('Given Lefty', () => {
       expect(lefty.checkCollectedItems()).toBe(0);
     });
   });
+
+  describe("When it is rotated -90 degrees from it's default direction", () => {
+    test('Then it should be facing up', () => {
+      const lefty = new Lefty({
+        ...defaultLeftyConfig,
+      });
+
+      lefty.turn();
+
+      expect(lefty.getOrientation()).toBe(Direction.UP);
+    });
+  });
 });
