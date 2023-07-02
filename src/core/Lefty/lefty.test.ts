@@ -1,5 +1,8 @@
+import { MockCollectable } from '../../__mocks__/mock-collectable';
 import { Direction } from '../../enums';
 import { type Coordinates } from '../../types';
+import { BaseStack } from '../Stack';
+import { StorageModule } from '../StorageModule/storage-module';
 import { Lefty, defaultLeftyConfig } from './lefty';
 
 describe('Given Lefty', () => {
@@ -87,6 +90,33 @@ describe('Given Lefty', () => {
       lefty.move();
 
       expect(lefty.getCoordinates()).toStrictEqual(expectedCoordinates);
+    });
+  });
+
+  describe('When it picks up an item', () => {
+    test("Then it should be stored in lefty's storage", () => {
+      const lefty = new Lefty({
+        ...defaultLeftyConfig,
+        storage: new StorageModule(new BaseStack(5)),
+      });
+
+      lefty.pickUp(new MockCollectable());
+
+      expect(lefty.checkCollectedItems()).toBe(1);
+    });
+  });
+
+  describe('When it places an item', () => {
+    test("Then it should be removed from lefty's storage", () => {
+      const lefty = new Lefty({
+        ...defaultLeftyConfig,
+        storage: new StorageModule(new BaseStack(5)),
+      });
+
+      lefty.pickUp(new MockCollectable());
+      lefty.place();
+
+      expect(lefty.checkCollectedItems()).toBe(0);
     });
   });
 });
