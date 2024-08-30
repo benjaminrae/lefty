@@ -102,7 +102,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Docusaurus cache and generated files
 .docusaurus
@@ -153,3 +152,5 @@ dist
 .webpack/
 
 .DS_Store
+
+.idea
