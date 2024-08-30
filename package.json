@@ -27,33 +27,31 @@
   "author": "Benjamin Rae <benjaminrae93@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
-    "@types/jest": "^29.5.2",
-    "@typescript-eslint/eslint-plugin": ">=5.57.0",
-    "@typescript-eslint/parser": ">=5.57.0",
-    "conventional-changelog-atom": "^3.0.0",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "conventional-changelog-atom": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": ">=8.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-xo": "^0.43.1",
-    "eslint-config-xo-typescript": "^0.57.0",
-    "husky": "^8.0.0",
-    "jest": "^29.5.0",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-xo": "^0.46.0",
+    "eslint-config-xo-typescript": "^6.0.0",
+    "husky": "^9.1.5",
+    "jest": "^29.7.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
-    "lint-staged": "^13.2.3",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
-    "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
+    "lint-staged": "^15.2.9",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.5.4"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "lefty": "link:"
-  }
+  "packageManager": "pnpm@9.8.0+sha512.8e4c3550fb500e808dbc30bb0ce4dd1eb614e30b1c55245f211591ec2cdf9c611cabd34e1364b42f564bd54b3945ed0f49d61d1bbf2ec9bd74b866fcdc723276"
 }
